@@ -1,11 +1,22 @@
-brctl addbr br0
-brctl addif br0 eth0
-brctl addif br0 eth1
-brctl addif br0 eth2
-brctl addif br0 eth3
+brctl addbr br0.10
+
 ifconfig eth0 up
 ifconfig eth1 up
 ifconfig eth2 up
 ifconfig eth3 up
-brctl stp br0 on
-ifconfig br0 up
+
+vconfig add eth3 10
+
+brctl addif br0.10 eth3.10
+brctl addif br0.10 eth0
+brctl addif br0.10 eth1
+brctl addif br0.10 eth2
+
+ifconfig eth0 up
+ifconfig eth1 up
+ifconfig eth2 up
+ifconfig eth3.10 up
+
+ifconfig br0.10 up
+
+brctl stp br0.10 on
